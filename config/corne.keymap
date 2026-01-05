@@ -8,17 +8,12 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
-    behaviors {
-        HMR: HMR {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HMR";
-            bindings = <&kp>, <&kp>;
+    combos {
+        compatible = "zmk,combos";
 
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            hold-trigger-on-release;
-            hold-trigger-key-positions = <13 14 15 16>;
+        gaming_layer {
+            bindings = <&to 3>;
+            key-positions = <14 3 16>;
         };
     };
 
@@ -33,10 +28,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp ESCAPE  &kp Q               &kp W           &kp F           &kp P  &kp B        &kp J    &kp L  &kp U            &kp Y            &kp SEMI             &kp BSPC
-&kp TAB     &mt LEFT_CONTROL A  &mt LEFT_ALT R  &mt LEFT_WIN S  &kp T  &kp G        &kp M    &kp N  &mt RIGHT_WIN E  &mt RIGHT_ALT I  &mt RIGHT_CONTROL O  &kp SQT
-&kp BSLH    &kp Z               &kp X           &kp C           &kp D  &kp V        &kp K    &kp H  &kp COMMA        &kp DOT          &kp FSLH             &kp QUESTION
-                                                &kp LEFT_SHIFT  &to 1  &kp SPACE    &kp RET  &mo 2  &kp RIGHT_SHIFT
+&kp ESCAPE        &kp Q  &kp W  &kp E         &kp R           &kp T        &kp Y    &kp U            &kp I         &kp O    &kp P     &kp BSPC
+&kp TAB           &kp A  &kp S  &kp D         &kp F           &kp G        &kp H    &kp J            &kp K         &kp L    &kp SEMI  &to 1
+&kp LEFT_CONTROL  &kp Z  &kp X  &kp C         &kp V           &kp B        &kp N    &kp M            &kp COMMA     &kp DOT  &kp FSLH  &to 2
+                                &kp LEFT_ALT  &kp LEFT_SHIFT  &kp SPACE    &kp RET  &kp RIGHT_SHIFT  &kp LEFT_WIN
             >;
         };
 
@@ -48,10 +43,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp ESCAPE     &kp N1          &kp N2          &kp N3        &kp N4           &kp N5       &kp N6     &kp N7          &kp N8          &kp N9           &kp N0  &kp BSPC
-&kp TAB        &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans       &kp PLUS   &kp EQUAL       &kp LBKT        &kp RBKT         &trans  &trans
-&kp BACKSLASH  &kp N6          &kp N7          &kp N8        &kp N9           &kp N0       &kp MINUS  &kp UNDERSCORE  &kp LEFT_BRACE  &kp RIGHT_BRACE  &trans  &trans
-                                               &kp LSHFT     &to 0            &kp SPACE    &kp RET    &mo 2           &kp RSHFT
+&kp ESCAPE        &kp N1          &kp N2          &kp N3        &kp N4           &kp N5       &kp N6     &kp N7           &kp N8          &kp N9           &kp N0  &kp BSPC
+&kp TAB           &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans       &kp PLUS   &kp EQUAL        &kp LBKT        &kp RBKT         &trans  &to 0
+&kp LEFT_CONTROL  &trans          &trans          &trans        &trans           &trans       &kp MINUS  &kp UNDERSCORE   &kp LEFT_BRACE  &kp RIGHT_BRACE  &trans  &to 2
+                                                  &kp LEFT_ALT  &kp LEFT_SHIFT   &kp SPACE    &kp RET    &kp RIGHT_SHIFT  &kp LEFT_WIN
             >;
         };
 
@@ -63,10 +58,19 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp ESCAPE     &kp F1           &kp F2  &kp F3          &kp F4      &kp F5         &kp CARET  &kp AMPS   &kp ASTERISK     &kp LPAR  &kp RPAR  &kp BSPC
-&kp TAB        &kp EXCLAMATION  &kp AT  &kp HASH        &kp DOLLAR  &kp PERCENT    &kp MINUS  &kp EQUAL  &kp LBKT         &kp RBKT  &kp BSLH  &kp GRAVE
-&kp BACKSLASH  &trans           &trans  &trans          &trans      &trans         &kp UNDER  &kp PLUS   &kp LBRC         &kp RBRC  &kp PIPE  &kp TILDE
-                                        &kp LEFT_SHIFT  &trans      &kp SPACE      &kp RET    &trans     &kp RIGHT_SHIFT
+&kp F1            &kp F2           &kp F3  &kp F4          &kp F5          &kp F6         &kp F7          &kp F8     &kp F9           &kp F10   &kp F11   &kp F12
+&kp SINGLE_QUOTE  &kp EXCLAMATION  &kp AT  &kp HASH        &kp DOLLAR      &kp PERCENT    &kp MINUS       &kp EQUAL  &kp LBKT         &kp RBKT  &kp BSLH  &to 0
+&kp BACKSLASH     &kp GRAVE        &trans  &trans          &trans          &trans         &kp UNDERSCORE  &kp PLUS   &kp LBRC         &kp RBRC  &kp PIPE  &to 1
+                                           &kp LEFT_SHIFT  &kp LEFT_SHIFT  &kp SPACE      &kp RET         &trans     &kp RIGHT_SHIFT
+            >;
+        };
+
+        gaming_layer {
+            bindings = <
+&kp ESCAPE  &kp TAB           &kp Q           &kp UP_ARROW    &kp E            &kp R           &trans     &trans          &trans        &trans  &trans  &trans
+&trans      &kp LEFT_SHIFT    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp F           &trans     &trans          &trans        &trans  &trans  &to 0
+&trans      &kp LEFT_CONTROL  &kp NUMBER_1    &kp NUMBER_2    &kp NUMBER_3     &kp NUMBER_4    &trans     &trans          &trans        &trans  &trans  &to 1
+                                              &kp LEFT_ALT    &kp LEFT_SHIFT   &kp SPACE       &kp ENTER  &kp LEFT_SHIFT  &kp LEFT_WIN
             >;
         };
     };
