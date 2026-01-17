@@ -11,44 +11,34 @@
     combos {
         compatible = "zmk,combos";
 
-        l_shift {
-            bindings = <&kp LEFT_SHIFT>;
-            key-positions = <16 38>;
+        enter {
+            bindings = <&kp ENTER>;
+            key-positions = <19 20>;
         };
 
-        r_shift {
-            bindings = <&kp RIGHT_SHIFT>;
-            key-positions = <19 39>;
+        tab {
+            bindings = <&kp TAB>;
+            key-positions = <2 1>;
         };
 
-        l_control {
-            bindings = <&kp LEFT_CONTROL>;
-            key-positions = <38 15>;
+        ctrl+shift {
+            bindings = <&kp LC(LEFT_SHIFT)>;
+            key-positions = <25 26>;
         };
 
-        r_control {
-            bindings = <&kp RIGHT_CONTROL>;
-            key-positions = <39 20>;
+        backspace {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <16 15>;
         };
 
-        l_alt {
-            bindings = <&kp LEFT_ALT>;
-            key-positions = <38 14>;
+        ctrl+backspace {
+            bindings = <&kp LC(BACKSPACE)>;
+            key-positions = <28 27>;
         };
 
-        r_alt {
-            bindings = <&kp RIGHT_ALT>;
-            key-positions = <39 21>;
-        };
-
-        gaming_layer {
-            bindings = <&tog 3>;
-            key-positions = <14 3 16 38>;
-        };
-
-        base_layer {
-            bindings = <&to 0>;
-            key-positions = <38 16 39 19>;
+        symbol_layer {
+            bindings = <&to 3>;
+            key-positions = <32 33>;
         };
     };
 
@@ -63,14 +53,14 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&trans  &kp Q  &kp W  &kp F  &kp P   &kp B        &kp J        &kp L  &kp U      &kp Y    &kp SEMI  &kp BSPC
-&trans  &kp A  &kp R  &kp S  &kp T   &kp G        &kp M        &kp N  &kp E      &kp I    &kp O     &kp GRAVE
-&trans  &kp Z  &kp X  &kp C  &kp D   &kp V        &kp K        &kp H  &kp COMMA  &kp DOT  &kp FSLH  &kp ENTER
-                      &mo 4  &tog 2  &kp SPACE    &key_repeat  &mo 1  &mo 5
+&trans  &kp Q  &kp W  &kp F             &kp P  &kp B        &kp J           &kp L  &kp U         &kp Y    &kp SEMI  &trans
+&to 4   &kp A  &kp R  &kp S             &kp T  &kp G        &kp M           &kp N  &kp E         &kp I    &kp O     &kp GRAVE
+&trans  &kp Z  &kp X  &kp C             &kp D  &kp V        &kp K           &kp H  &kp COMMA     &kp DOT  &kp FSLH  &trans
+                      &kp LEFT_CONTROL  &to 1  &kp SPACE    &kp LEFT_SHIFT  &to 2  &kp LEFT_ALT
             >;
         };
 
-        numpad_layer {
+        nump_layer {
             // -----------------------------------------------------------------------------------------
             // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
             // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
@@ -78,19 +68,28 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &trans        &trans        &kp TAB           &kp ESC         &kp DEL      &kp STAR     &kp N7        &kp N8        &kp N9        &kp SLASH  &trans
-&trans  &kp CAPS      &kp LEFT_ALT  &kp LEFT_CONTROL  &kp LEFT_SHIFT  &kp ENTER    &kp PLUS     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp MINUS  &trans
-&trans  &kp LEFT_WIN  &trans        &trans            &trans          &trans       &kp PERCENT  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans     &trans
-                                    &trans            &trans          &kp SPACE    &trans       &kp N0        &trans
+&trans  &kp F9  &kp F10  &kp F11           &kp F12  &trans       &kp STAR        &kp N7        &kp N8        &kp N9        &kp SLASH  &trans
+&trans  &kp F4  &kp F3   &kp F2            &kp F1   &trans       &kp PLUS        &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp MINUS  &trans
+&trans  &kp F8  &kp F7   &kp F6            &kp F5   &trans       &kp PERCENT     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp N0     &trans
+                         &kp LEFT_CONTROL  &to 0    &kp SPACE    &kp LEFT_SHIFT  &to 2         &kp LEFT_ALT
+            >;
+        };
+
+        navigation_layer {
+            bindings = <
+&trans  &trans  &trans          &trans            &trans        &trans             &trans          &trans          &trans        &trans           &trans  &trans
+&trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW    &kp UP_ARROW  &kp RIGHT_ARROW    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans  &trans
+&trans  &trans  &trans          &trans            &trans        &trans             &trans          &trans          &trans        &trans           &trans  &trans
+                                &kp LEFT_CONTROL  &to 1         &kp SPACE          &kp LSHFT       &to 0           &kp LEFT_ALT
             >;
         };
 
         symbol_layer {
             bindings = <
-&trans  &kp UNDER        &kp LESS_THAN  &kp GREATER_THAN  &kp MINUS  &kp PIPE         &kp CARET    &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp DOLLAR  &trans             &trans
-&trans  &kp EXCLAMATION  &kp STAR       &kp SLASH         &kp EQUAL  &kp AMPERSAND    &kp HASH     &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMI    &kp DOUBLE_QUOTES  &trans
-&trans  &kp TILDE        &kp PLUS       &kp LBKT          &kp RBKT   &kp PERCENT      &kp AT_SIGN  &kp COLON             &kp COMMA              &kp DOT     &kp APOS           &trans
-                                        &trans            &trans     &trans           &trans       &trans                &trans
+&trans  &kp UNDER        &kp LESS_THAN  &kp GREATER_THAN  &kp MINUS  &kp PIPE         &kp CARET       &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp DOLLAR  &trans             &trans
+&trans  &kp EXCLAMATION  &kp STAR       &kp SLASH         &kp EQUAL  &kp AMPERSAND    &kp HASH        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMI    &kp DOUBLE_QUOTES  &to 0
+&trans  &kp TILDE        &kp PLUS       &kp LBKT          &kp RBKT   &kp PERCENT      &kp AT_SIGN     &kp COLON             &kp COMMA              &kp DOT     &kp APOS           &trans
+                                        &kp LEFT_CONTROL  &to 1      &kp SPACE        &kp LEFT_SHIFT  &to 2                 &kp LEFT_ALT
             >;
         };
 
@@ -99,25 +98,16 @@
 &kp ESCAPE  &kp TAB           &kp Q         &kp W         &kp E           &kp R           &trans  &trans  &trans  &trans  &trans  &trans
 &trans      &kp LEFT_SHIFT    &kp A         &kp S         &kp D           &kp F           &trans  &trans  &trans  &trans  &trans  &trans
 &trans      &kp LEFT_CONTROL  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3    &kp NUMBER_4    &trans  &trans  &trans  &trans  &trans  &trans
-                                            &kp LEFT_ALT  &kp LEFT_SHIFT  &kp SPACE       &to 0   &trans  &trans
+                                            &kp LEFT_ALT  &kp LEFT_SHIFT  &kp SPACE       &to 0   &to 5   &trans
             >;
         };
 
-        fkeys_layer {
+        layer_6 {
             bindings = <
-&trans  &kp F12  &kp F9  &kp F8  &kp F7  &trans    &trans  &trans  &trans     &trans     &trans  &trans
-&trans  &kp F10  &kp F3  &kp F2  &kp F1  &trans    &trans  &trans  &kp LSHFT  &kp LCTRL  &trans  &trans
-&trans  &kp F11  &kp F6  &kp F5  &kp F4  &trans    &trans  &trans  &trans     &trans     &trans  &trans
-                         &trans  &trans  &trans    &trans  &trans  &trans
-            >;
-        };
-
-        navigation_layer {
-            bindings = <
-&trans  &trans  &kp HOME  &kp UP_ARROW  &kp END          &kp PAGE_UP      &trans        &trans  &trans           &trans             &trans  &trans
-&trans  &trans  &kp LEFT  &kp DOWN      &kp RIGHT_ARROW  &kp PAGE_DOWN    &trans        &trans  &kp RIGHT_SHIFT  &kp RIGHT_CONTROL  &trans  &trans
-&trans  &trans  &trans    &trans        &trans           &trans           &trans        &trans  &kp PAGE_DOWN    &kp PAGE_DOWN      &trans  &trans
-                          &trans        &trans           &trans           &kp LEFT_WIN  &trans  &trans
+&kp ESCAPE  &kp TAB         &kp Q           &kp W           &kp E         &kp R              &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &kp LEFT_SHIFT  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW    &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &kp LCTRL       &kp N1          &kp N2          &kp N3        &kp N4             &trans  &trans  &trans  &trans  &trans  &trans
+                                            &kp LEFT_ALT    &kp LSHFT     &kp SPACE          &to 0   &to 4   &trans
             >;
         };
     };
